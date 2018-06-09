@@ -6,6 +6,14 @@
     <script type="javascript" rel="script" href="/js/a.js"></script>
 </head>
 <body>
-<p th:text="'Hello, ' + ${name} + '!'" />
+<!--<p th:text="'Hello, ' + ${name} + '!'" />-->
+
+<div>
+    <ul>
+        <li th:each="user : ${users}">
+            <a th:href="${user}" th:text="${user}" />
+        </li>
+    </ul>
+</div>
 </body>
 </html>
