@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: projectMgr
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/mysql
+    username: root
+    password:
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+      use-new-id-generator-mappings: false
+    database-platform:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+server:
+  port: 8080
+
