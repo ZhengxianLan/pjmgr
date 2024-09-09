@@ -7,8 +7,7 @@ apt-get install dante-server -y
 NET_IF=$(ip -o -4 route show to default | awk '{print $5}')
 
 # 创建用于 SOCKS5 认证的用户并设置密码
-SOCKS5_USER="libai"
-SOCKS5_PASS="dufu"
+
 
 # 创建用户
 useradd $SOCKS5_USER
@@ -21,7 +20,7 @@ logoutput: syslog
 internal: $NET_IF port = 1080
 external: $NET_IF
 
-method: username
+method: username none
 user.privileged: proxy
 user.notprivileged: nobody
 
