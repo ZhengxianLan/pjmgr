@@ -6,6 +6,14 @@ apt-get install dante-server -y
 # 动态获取网卡接口名称
 NET_IF=$(ip -o -4 route show to default | awk '{print $5}')
 
+# 创建用于 SOCKS5 认证的用户并设置密码
+SOCKS5_USER="libai"
+SOCKS5_PASS="dufu"
+
+# 创建用户
+useradd $SOCKS5_USER
+echo "$SOCKS5_USER:$SOCKS5_PASS" | chpasswd
+
 # 写入 danted 配置文件
 cat <<EOL > /etc/danted.conf
 logoutput: syslog
@@ -13,7 +21,7 @@ logoutput: syslog
 internal: $NET_IF port = 1080
 external: $NET_IF
 
-method: username none
+method: username
 user.privileged: proxy
 user.notprivileged: nobody
 
